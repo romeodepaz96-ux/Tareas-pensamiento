@@ -1,0 +1,94 @@
+def convertir_a_maya(numero):
+    if numero == 0:
+        return ["○"]
+
+    niveles = []
+
+    while numero > 0:
+        residuo = numero % 20
+        numero = numero // 20
+        niveles.append(residuo)
+
+    representacion = []
+
+    for nivel in niveles:
+        if nivel == 0:
+            representacion.append("○")
+        else:
+            barras = nivel // 5
+            puntos = nivel % 5
+            simbolo = "—" * barras + "●" * puntos
+            representacion.append(simbolo)
+
+    return representacion
+
+
+# Programa principal
+num = int(input("Ingrese un número: "))
+
+maya = convertir_a_maya(num)
+
+print("\nNúmero en sistema maya:\n")
+def convertir_a_maya(numero):
+    if numero == 0:
+        return ["○"]
+
+    niveles = []
+
+    while numero > 0:
+        residuo = numero % 20
+        numero = numero // 20
+        niveles.append(residuo)
+
+    representacion = []
+
+    for nivel in niveles:
+        if nivel == 0:
+            representacion.append("○")
+        else:
+            barras = nivel // 5
+            puntos = nivel % 5
+            simbolo = "—" * barras + "●" * puntos
+            representacion.append(simbolo)
+
+    return representacion
+
+
+def convertir_a_binario(numero):
+    return bin(numero)[2:]
+
+
+# MENÚ
+while True:
+    print("\n--- MENÚ ---")
+    print("1. Convertir a sistema maya")
+    print("2. Convertir a binario (base 2)")
+    print("3. Salir")
+
+    opcion = input("Seleccione una opción: ")
+
+    if opcion == "1":
+        num = int(input("Ingrese un número: "))
+        maya = convertir_a_maya(num)
+
+        print("\nNúmero en sistema maya:\n")
+        for nivel in reversed(maya):
+            print(nivel)
+
+    elif opcion == "2":
+        num = int(input("Ingrese un número: "))
+        binario = convertir_a_binario(num)
+
+        print("\nNúmero en binario:")
+        print(binario)
+
+    elif opcion == "3":
+        print("Saliendo del programa...")
+        break
+
+    else:
+        print("Opción inválida, intente de nuevo.")
+
+# Imprimir de arriba hacia abajo
+for nivel in reversed(maya):
+    print(nivel)
