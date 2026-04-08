@@ -1,0 +1,52 @@
+#fruta=["fresa","mango","manzana"]
+#numeros=[1,2,3,4,5,6,7,8]
+#mixto=["fresa",1,2,"manzana"]
+
+#print(fruta[-2])
+
+#fruta.append("Banano")
+
+#print(fruta)
+
+#fruta.pop()
+
+#print(fruta)
+
+
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+contador = 0  # ERROR: tipo incorrecto (string)
+
+for i in numeros:
+    if i % 2 == 0:  # ERROR: operador incorrecto
+        contador = contador + 1
+
+print(contador)
+
+num=[1,2,3,4,5,6,7,8,9,10]
+numimp=[]
+numpar=[]
+cont1=0
+cont2=0
+sumpar=0
+sumimp=0
+for i in num:
+    
+    if(i%2==0):
+        cont1=cont1+1
+        numpar.append(i)
+        sumpar+=i
+    else:
+        cont2=cont2+1
+        numimp.append(i)
+        sumimp+=i
+        
+print(num)
+print("Hay: ", cont1, "Numeros pares")
+print("Hay: ", cont2, "Numeros impares")
+
+print(numpar)
+print(numimp)
+
+print("la suma de los pares es: ",sumpar)
+print("la suma de los impares es: ",sumimp)
