@@ -1,0 +1,38 @@
+# Función para crear una matriz
+def crear_matriz(filas, columnas, nombre):
+    matriz = []
+    print(f"\nIngresa los valores de la matriz {nombre}:")
+    for i in range(filas):
+        fila = []
+        for j in range(columnas):
+            valor = int(input(f"Elemento [{i}][{j}]: "))
+            fila.append(valor)
+        matriz.append(fila)
+    return matriz
+
+# Función para restar matrices
+def restar_matrices(A, B):
+    filas = len(A)
+    columnas = len(A[0])
+    resultado = []
+
+    for i in range(filas):
+        fila = []
+        for j in range(columnas):
+            fila.append(A[i][j] - B[i][j])
+        resultado.append(fila)
+
+    return resultado
+
+# Programa principal
+filas = int(input("Número de filas: "))
+columnas = int(input("Número de columnas: "))
+
+A = crear_matriz(filas, columnas, "A")
+B = crear_matriz(filas, columnas, "B")
+
+R = restar_matrices(A, B)
+
+print("\nResultado de la resta:")
+for fila in R:
+    print(fila)
