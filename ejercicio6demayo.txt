@@ -1,0 +1,81 @@
+# Crear la matriz 3x3
+matriz = []
+
+print("Ingresa los valores de la matriz 3x3:")
+
+for i in range(3):
+    fila = []
+    for j in range(3):
+        valor = int(input(f"Elemento [{i}][{j}]: "))
+        fila.append(valor)
+    matriz.append(fila)
+
+# Vector para suma de filas
+suma_filas = []
+
+for fila in matriz:
+    suma_filas.append(sum(fila))
+
+# Vector para suma de columnas
+suma_columnas = []
+
+for j in range(3):
+    suma = 0
+    for i in range(3):
+        suma += matriz[i][j]
+    suma_columnas.append(suma)
+
+# Mostrar resultados
+print("\nMatriz:")
+for fila in matriz:
+    print(fila)
+
+print("\nSuma de filas:", suma_filas)
+print("Suma de columnas:", suma_columnas)
+
+# Leer matriz 3x3
+matriz = []
+
+print("Ingresa los valores del cuadrado 3x3:")
+
+for i in range(3):
+    fila = []
+    for j in range(3):
+        valor = int(input(f"Elemento [{i}][{j}]: "))
+        fila.append(valor)
+    matriz.append(fila)
+
+# Calcular suma de la primera fila como referencia
+constante = sum(matriz[0])
+
+es_magico = True
+
+# Verificar filas
+for fila in matriz:
+    if sum(fila) != constante:
+        es_magico = False
+
+# Verificar columnas
+for j in range(3):
+    suma_col = 0
+    for i in range(3):
+        suma_col += matriz[i][j]
+    if suma_col != constante:
+        es_magico = False
+
+# Verificar diagonales
+diag1 = matriz[0][0] + matriz[1][1] + matriz[2][2]
+diag2 = matriz[0][2] + matriz[1][1] + matriz[2][0]
+
+if diag1 != constante or diag2 != constante:
+    es_magico = False
+
+# Resultado
+print("\nMatriz:")
+for fila in matriz:
+    print(fila)
+
+if es_magico:
+    print("Es un cuadrado mágico ✅")
+else:
+    print("No es un cuadrado mágico ❌")
