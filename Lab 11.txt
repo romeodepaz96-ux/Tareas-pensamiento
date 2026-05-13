@@ -1,0 +1,165 @@
+```python id="tkinter-completo"
+# =====================================================
+# MINI PROYECTO - MONITOREO DE SALUD
+# Python 3 + Tkinter
+# =====================================================
+
+from tkinter import *
+
+# -----------------------------------------------------
+# DATOS
+# -----------------------------------------------------
+
+dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]
+
+niveles_azucar = [130, 160, 95, 175, 160]
+niveles_sal = [2000, 2400, 1800, 2400, 2700]
+presion = [115, 130, 110, 125, 175]
+
+# -----------------------------------------------------
+# FUNCION DEL BOTON
+# -----------------------------------------------------
+
+def evaluar():
+
+    resultado = ""
+
+    suma_azucar = 0
+    suma_sal = 0
+    suma_presion = 0
+
+    # RECORRER DATOS
+    for i in range(len(dias)):
+
+        resultado += "========================\n"
+        resultado += "Dia: " + dias[i] + "\n"
+
+        azucar = niveles_azucar[i]
+        sal = niveles_sal[i]
+        presion_dia = presion[i]
+
+        # Acumuladores
+        suma_azucar += azucar
+        suma_sal += sal
+        suma_presion += presion_dia
+
+        # ---------------------------------
+        # AZUCAR
+        # ---------------------------------
+        resultado += "Azucar: " + str(azucar) + " mg/dL\n"
+
+        if 70 <= azucar <= 140:
+            resultado += "Estado: NORMAL\n"
+        else:
+            resultado += "ALERTA: Azucar fuera de rango\n"
+
+        # ---------------------------------
+        # SAL
+        # ---------------------------------
+        resultado += "Sal: " + str(sal) + " mg\n"
+
+        if sal <= 2300:
+            resultado += "Estado: NORMAL\n"
+        else:
+            resultado += "ALERTA: Exceso de sal\n"
+
+        # ---------------------------------
+        # PRESION
+        # ---------------------------------
+        resultado += "Presion: " + str(presion_dia) + " mmHg\n"
+
+        if presion_dia < 120:
+            categoria = "Normal"
+
+        elif 120 <= presion_dia <= 129:
+            categoria = "Elevada"
+
+        elif 130 <= presion_dia <= 139:
+            categoria = "Hipertension Etapa 1"
+
+        else:
+            categoria = "Hipertension Etapa 2"
+
+        resultado += "Clasificacion: " + categoria + "\n"
+
+        if presion_dia >= 140:
+            resultado += "ALERTA MEDICA\n"
+
+        resultado += "\n"
+
+    # -------------------------------------------------
+    # PROMEDIOS
+    # -------------------------------------------------
+
+    promedio_azucar = suma_azucar / len(dias)
+    promedio_sal = suma_sal / len(dias)
+    promedio_presion = suma_presion / len(dias)
+
+    resultado += "========================\n"
+    resultado += "PROMEDIOS SEMANALES\n"
+    resultado += "========================\n"
+
+    resultado += "Promedio Azucar: " + str(round(promedio_azucar, 2)) + "\n"
+    resultado += "Promedio Sal: " + str(round(promedio_sal, 2)) + "\n"
+    resultado += "Promedio Presion: " + str(round(promedio_presion, 2)) + "\n"
+
+    # Mostrar resultados
+    area_texto.delete("1.0", END)
+    area_texto.insert(END, resultado)
+
+# -----------------------------------------------------
+# VENTANA
+# -----------------------------------------------------
+
+ventana = Tk()
+ventana.title("Sistema de Monitoreo de Salud")
+ventana.geometry("650x600")
+ventana.config(bg="white")
+
+# -----------------------------------------------------
+# TITULO
+# -----------------------------------------------------
+
+titulo = Label(
+    ventana,
+    text="MONITOREO DE SALUD",
+    font=("Arial", 18, "bold"),
+    bg="white"
+)
+
+titulo.pack(pady=10)
+
+# -----------------------------------------------------
+# BOTON
+# -----------------------------------------------------
+
+boton = Button(
+    ventana,
+    text="Evaluar Datos",
+    command=evaluar,
+    font=("Arial", 12),
+    bg="lightblue",
+    width=20
+)
+
+boton.pack(pady=10)
+
+# -----------------------------------------------------
+# AREA DE TEXTO
+# -----------------------------------------------------
+
+area_texto = Text(
+    ventana,
+    width=70,
+    height=25,
+    font=("Courier New", 10)
+)
+
+area_texto.pack(pady=10)
+
+# -----------------------------------------------------
+# EJECUTAR
+# -----------------------------------------------------
+
+ventana.mainloop()
+```
